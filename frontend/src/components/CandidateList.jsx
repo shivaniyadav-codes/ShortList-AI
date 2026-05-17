@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Search, Briefcase, Mail, Pencil, Trash2, X, Check } from 'lucide-react';
+import { api } from '../api';
 
 const CandidateList = () => {
   const [candidates, setCandidates] = useState([]);
@@ -17,7 +18,7 @@ const CandidateList = () => {
 
   const fetchCandidates = async () => {
     try {
-      const response = await fetch('/api/candidates');
+      const response = await fetch(api('/api/candidates'));
       if (response.ok) {
         const data = await response.json();
         setCandidates(data);
@@ -65,7 +66,7 @@ const CandidateList = () => {
   const saveEdit = async (id) => {
     setSaving(true);
     try {
-      const response = await fetch(`/api/candidates/${id}`, {
+      const response = await fetch(api(`/api/candidates/${id}`), {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -89,7 +90,7 @@ const CandidateList = () => {
   const deleteCandidate = async (id) => {
     if (!confirm("Delete this candidate?")) return;
     try {
-      const response = await fetch(`/api/candidates/${id}`, { method: 'DELETE' });
+      const response = await fetch(api(`/api/candidates/${id}`), { method: 'DELETE' });
       if (response.ok) {
         setCandidates(prev => prev.filter(c => c._id !== id));
       }

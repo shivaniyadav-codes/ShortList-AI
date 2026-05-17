@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle, X, ArrowRight } from 'lucide-react';
+import { api } from '../api';
 
 const CandidateForm = () => {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ const CandidateForm = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/candidates', {
+      const response = await fetch(api('/api/candidates'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

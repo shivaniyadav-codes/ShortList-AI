@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import ShortlistedDisplay from './ShortlistedDisplay';
 import { Sparkles, BarChart2, X, ArrowRight } from 'lucide-react';
+import { api } from '../api';
 
 const JobRequirementForm = () => {
   const [formData, setFormData] = useState({
@@ -55,7 +56,7 @@ const JobRequirementForm = () => {
     setShowGraph(false);
 
     try {
-      const response = await fetch('/api/match', {
+      const response = await fetch(api('/api/match'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -82,7 +83,7 @@ const JobRequirementForm = () => {
     setAiLoading(true);
 
     try {
-      const response = await fetch('/api/ai/shortlist', {
+      const response = await fetch(api('/api/ai/shortlist'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
