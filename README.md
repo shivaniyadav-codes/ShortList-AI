@@ -57,6 +57,7 @@ OPENROUTER_API_KEY=your_openrouter_api_key
 - **Frontend** — Deployed on Render
 
 ## Live link of the Project
+[ShortList AI](https://shortlist-ai-gw7i.onrender.com)
 
 ## License
 
